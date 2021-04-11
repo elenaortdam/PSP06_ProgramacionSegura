@@ -44,33 +44,28 @@ public class Ejercicio1 {
 		}
 
 		try {
-			BufferedReader entradaDatos = new BufferedReader(new InputStreamReader(System.in));
-
 			String username;
 			Console console = System.console();
 			System.out.println("TAREA 6 - EJERCICIO 1 - CONTROL DE LOG.");
 			System.out.println("=========================================");
 			do {
-//				if (console == null) {
-//					throw new NullPointerException("Fallo al escribir por consola");
-//				}
-//				username = console.readLine("Introduce Nombre de usuario: ");
-				System.out.print("Introduce Nombre de usuario: ");
-				username = entradaDatos.readLine();
+				if (console == null) {
+					throw new NullPointerException("Fallo al escribir por consola");
+				}
+				username = console.readLine("Introduce Nombre de usuario: ");
 				if (username.isEmpty()) {
 					throw new IllegalArgumentException("El campo no puede estar vacío");
 				}
 				if (!username.trim().equals("*")) {
-//					char[] passwordArray = console.readPassword("Contraseña: ");
-//					if (passwordArray == null) {
-//						throw new IllegalArgumentException("El campo no puede ser nulo");
-//					}
-					System.out.print("Contraseña: ");
-//					String password = new String(passwordArray);
-					String password = entradaDatos.readLine();
+					char[] passwordArray = console.readPassword("Contraseña: ");
+					if (passwordArray == null) {
+						throw new IllegalArgumentException("El campo no puede ser nulo");
+					}
+					String password = new String(passwordArray);
 					logger.log(Level.INFO, "# Conectando con el servidor...");
 					writeLog(username, password);
 				}
+				//Dormimos 1 segundo porque volvía a pedir el usuario y no había mostrado todos los logs
 				try {
 					Thread.sleep(1000);
 				} catch (InterruptedException e) {
@@ -94,7 +89,6 @@ public class Ejercicio1 {
 			return;
 		}
 		logger.log(Level.INFO, "#Login correcto");
-//		System.out.println("\t\tNos conectamos a: localhost");
 		//Nos quedamos con el número
 		logger.log(Level.INFO, String.format("#Hora de conexión: %s", LocalDateTime.now()));
 		int userId;

@@ -1,0 +1,11 @@
+<component name="ArtifactManager">
+  <artifact name="Capitulo6Ejercicio1:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Capitulo6Ejercicio1_jar</output-path>
+    <root id="root">
+      <element id="archive" name="Capitulo6Ejercicio1.jar">
+        <element id="module-output" name="PSPTarea6_OrtizSobrinoElena" />
+      </element>
+      <element id="library" level="project" name="commons-net-3.6" />
+    </root>
+  </artifact>
+</component>
